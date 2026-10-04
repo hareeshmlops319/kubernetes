@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../17-using-gpus-efficiently/">
+        <link rel="prev" href="../gitops-argocd/">
       
       
-        <link rel="next" href="../19-security-considerations/">
+        <link rel="next" href="01-kubectl-fundamentals/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>18. Day-2 Operations: Upgrades, Health, Reliability - NVIDIA GPU Operator Guide</title>
+        <title>CKA Exam Prep - NVIDIA GPU Operator Guide</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#18-day-2-operations-upgrades-health-reliability" class="md-skip">
+        <a href="#cka-exam-prep" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              18. Day-2 Operations: Upgrades, Health, Reliability
+              CKA Exam Prep
             
           </span>
         </div>
@@ -284,10 +284,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -341,11 +339,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -366,7 +364,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -857,37 +855,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    18. Day-2 Operations: Upgrades, Health, Reliability
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../18-day-2-operations/" class="md-nav__link">
         
   
   
@@ -903,70 +874,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#181-upgrading-the-gpu-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        18.1 Upgrading the GPU Operator
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#182-driver-upgrades" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        18.2 Driver upgrades
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#183-gpu-health-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        18.3 GPU health management
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#184-backup-and-gitops" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        18.4 Backup and GitOps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1150,6 +1057,8 @@
       
   
   
+    
+  
   
   
     
@@ -1179,15 +1088,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../cka/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -1205,13 +1114,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_4" id="__nav_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1231,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cka/01-kubectl-fundamentals/" class="md-nav__link">
+      <a href="01-kubectl-fundamentals/" class="md-nav__link">
         
   
   
@@ -1259,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cka/02-workloads-scheduling/" class="md-nav__link">
+      <a href="02-workloads-scheduling/" class="md-nav__link">
         
   
   
@@ -1287,7 +1196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cka/03-services-networking/" class="md-nav__link">
+      <a href="03-services-networking/" class="md-nav__link">
         
   
   
@@ -1315,7 +1224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cka/04-storage/" class="md-nav__link">
+      <a href="04-storage/" class="md-nav__link">
         
   
   
@@ -1343,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cka/05-cluster-architecture/" class="md-nav__link">
+      <a href="05-cluster-architecture/" class="md-nav__link">
         
   
   
@@ -1371,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cka/06-troubleshooting/" class="md-nav__link">
+      <a href="06-troubleshooting/" class="md-nav__link">
         
   
   
@@ -1399,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cka/07-practice-tasks/" class="md-nav__link">
+      <a href="07-practice-tasks/" class="md-nav__link">
         
   
   
@@ -1427,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cka/08-cheat-sheet/" class="md-nav__link">
+      <a href="08-cheat-sheet/" class="md-nav__link">
         
   
   
@@ -1482,10 +1391,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#181-upgrading-the-gpu-operator" class="md-nav__link">
+  <a href="#how-this-section-is-organized" class="md-nav__link">
     <span class="md-ellipsis">
       
-        18.1 Upgrading the GPU Operator
+        How this section is organized
       
     </span>
   </a>
@@ -1493,10 +1402,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#182-driver-upgrades" class="md-nav__link">
+  <a href="#the-exam-at-a-glance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        18.2 Driver upgrades
+        The exam at a glance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The exam at a glance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#curriculum-weights-where-the-points-are" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curriculum weights (where the points are)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-24-hour-plan-exam-tomorrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your 24-hour plan (exam tomorrow)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Your 24-hour plan (exam tomorrow)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Today
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exam-morning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exam morning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exam-day-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exam-day strategy
       
     </span>
   </a>
@@ -1504,21 +1480,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#183-gpu-health-management" class="md-nav__link">
+  <a href="#set-up-the-terminal-in-the-first-minute" class="md-nav__link">
     <span class="md-ellipsis">
       
-        18.3 GPU health management
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#184-backup-and-gitops" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        18.4 Backup and GitOps
+        Set up the terminal in the first minute
       
     </span>
   </a>
@@ -1545,94 +1510,232 @@
   
 
 
-<h1 id="18-day-2-operations-upgrades-health-reliability">18. Day-2 Operations: Upgrades, Health, Reliability<a class="headerlink" href="#18-day-2-operations-upgrades-health-reliability" title="Permanent link">&para;</a></h1>
-<h2 id="181-upgrading-the-gpu-operator">18.1 Upgrading the GPU Operator<a class="headerlink" href="#181-upgrading-the-gpu-operator" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Read release notes; CRDs are NOT upgraded by helm automatically</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/NVIDIA/gpu-operator/&lt;version&gt;/deployments/gpu-operator/crds/nvidia.com_clusterpolicies.yaml
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/NVIDIA/gpu-operator/&lt;version&gt;/deployments/gpu-operator/crds/nvidia.com_nvidiadrivers.yaml
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 2. Upgrade the release</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>gpu-operator<span class="w"> </span>nvidia/gpu-operator<span class="w"> </span>-n<span class="w"> </span>gpu-operator<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>--version<span class="o">=</span>&lt;new-version&gt;<span class="w"> </span>-f<span class="w"> </span>values-prod.yaml
-</code></pre></div>
-<p>(Check whether your version ships CRD-upgrade hooks. Recent charts include an upgrade-CRD job.)</p>
-<h2 id="182-driver-upgrades">18.2 Driver upgrades<a class="headerlink" href="#182-driver-upgrades" title="Permanent link">&para;</a></h2>
-<p>When you change <code>driver.version</code>, the <strong>upgrade controller</strong> rolls through the nodes:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>upgrade-required → cordon → wait-for-jobs → pod-deletion → drain
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  → pod-restart (new driver) → validation → uncordon → upgrade-done
-</code></pre></div>
-<p>Track progress:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-L<span class="w"> </span>nvidia.com/gpu-driver-upgrade-state
-</code></pre></div>
-<p>Best practices:</p>
-<ul>
-<li>Use <code>maxParallelUpgrades</code> and <code>maxUnavailable</code> to protect capacity.</li>
-<li>Use <code>waitForCompletion.podSelector</code> to let training jobs finish.</li>
-<li>Test on a canary node pool first (the <code>NVIDIADriver</code> CRD makes this easy).</li>
-<li>Stay on an NVIDIA <strong>production branch (PB)</strong> or <strong>LTSB</strong> driver for stability.</li>
-</ul>
-<h2 id="183-gpu-health-management">18.3 GPU health management<a class="headerlink" href="#183-gpu-health-management" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>DCGM diagnostics:</strong> <code>dcgmi diag -r 1</code> (quick), <code>-r 3</code> (long, run in maintenance windows).</li>
-<li><strong>XID errors:</strong> Check <code>dmesg | grep -i xid</code> on the node.</li>
-</ul>
+<h1 id="cka-exam-prep">CKA Exam Prep<a class="headerlink" href="#cka-exam-prep" title="Permanent link">&para;</a></h1>
+<p><strong>Certified Kubernetes Administrator: from the basics to exam-ready, with a plan for the last 24 hours</strong></p>
+<blockquote>
+<p><strong>Check before the exam:</strong> The Linux Foundation updates the exam's Kubernetes version and rules. Read the current <a href="https://docs.linuxfoundation.org/tc-docs/certification/lf-handbook2">CKA Candidate Handbook</a> and <a href="https://docs.linuxfoundation.org/tc-docs/certification/tips-cka-and-ckad">Important Instructions</a> the day before. This guide follows the curriculum revised in <strong>February 2025</strong>, which added Helm, Kustomize, Gateway API, CRDs/operators and extension interfaces.</p>
+</blockquote>
+<hr />
+<h2 id="how-this-section-is-organized">How this section is organized<a class="headerlink" href="#how-this-section-is-organized" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>XID</th>
-<th>Meaning</th>
-<th>Action</th>
+<th>Page</th>
+<th>Level</th>
+<th>What you get</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>13, 31, 43</td>
-<td>Application fault (illegal memory access, page fault)</td>
-<td>Usually an application bug</td>
+<td><a href="01-kubectl-fundamentals/">1. Fundamentals &amp; kubectl Speed</a></td>
+<td>Beginner</td>
+<td>Architecture, imperative commands, YAML generation, JSONPath, contexts</td>
 </tr>
 <tr>
-<td>45</td>
-<td>Preemptive cleanup</td>
-<td>Often follows another error</td>
+<td><a href="02-workloads-scheduling/">2. Workloads &amp; Scheduling</a></td>
+<td>Beginner → Intermediate</td>
+<td>Deployments, rollouts, ConfigMaps/Secrets, HPA, probes, sidecars, affinity, taints, quotas</td>
 </tr>
 <tr>
-<td>48</td>
-<td>Double-bit ECC error</td>
-<td>Drain, reset the GPU, RMA if it repeats</td>
+<td><a href="03-services-networking/">3. Services &amp; Networking</a></td>
+<td>Intermediate</td>
+<td>Services, DNS, NetworkPolicy, Ingress, <strong>Gateway API</strong></td>
 </tr>
 <tr>
-<td>63, 64</td>
-<td>ECC page retirement / row remap</td>
-<td>Reset when idle. Check remap failure</td>
+<td><a href="04-storage/">4. Storage</a></td>
+<td>Intermediate</td>
+<td>StorageClass, PV, PVC, access modes, reclaim policies, expansion</td>
 </tr>
 <tr>
-<td>74</td>
-<td>NVLink error</td>
-<td>Check hardware and cables, reset</td>
+<td><a href="05-cluster-architecture/">5. Cluster Architecture, Installation &amp; Configuration</a></td>
+<td>Advanced</td>
+<td>kubeadm install/upgrade, etcd backup/restore, RBAC, certificates, HA, <strong>Helm, Kustomize, CRDs</strong>, CNI/CSI/CRI</td>
 </tr>
 <tr>
-<td>79</td>
-<td>GPU fell off the bus</td>
-<td>Hardware/PCIe/power. Drain node, RMA</td>
+<td><a href="06-troubleshooting/">6. Troubleshooting</a></td>
+<td>Advanced</td>
+<td>Broken nodes, control plane, apps, services, DNS: the 30% domain</td>
 </tr>
 <tr>
-<td>92</td>
-<td>High single-bit ECC rate</td>
-<td>Monitor, plan replacement</td>
+<td><a href="07-practice-tasks/">7. Practice Tasks</a></td>
+<td>Exam-style</td>
+<td>25 timed tasks with hidden solutions</td>
 </tr>
 <tr>
-<td>94, 95</td>
-<td>Contained / uncontained ECC error</td>
-<td>95: reset the GPU. 94: the application is affected</td>
+<td><a href="08-cheat-sheet/">8. Cheat Sheet</a></td>
+<td>Last-minute</td>
+<td>One page to read right before the exam</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li><strong>Automated remediation:</strong> Node Problem Detector with GPU custom plugins, or NVIDIA's <strong>NVSentinel</strong> (GPU fault detection and remediation for Kubernetes) and similar tools. They taint or cordon unhealthy GPU nodes automatically.</li>
-<li><strong>Device plugin health:</strong> The device plugin marks GPUs unhealthy on critical XIDs, which removes them from allocatable resources. Configure XIDs to skip with <code>DP_DISABLE_HEALTHCHECKS</code> if you need to (rarely).</li>
+<hr />
+<h2 id="the-exam-at-a-glance">The exam at a glance<a class="headerlink" href="#the-exam-at-a-glance" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Format</td>
+<td>Online, remotely proctored, <strong>performance-based</strong>: you fix and build things in real clusters from a command line</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td><strong>2 hours</strong></td>
+</tr>
+<tr>
+<td>Tasks</td>
+<td>About <strong>15–20</strong> tasks, each with its own weight (shown per task)</td>
+</tr>
+<tr>
+<td>Passing score</td>
+<td><strong>66%</strong></td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>Remote Linux desktop (PSI) with a terminal and a browser. Multiple clusters, and you switch context per task</td>
+</tr>
+<tr>
+<td>Allowed docs</td>
+<td>kubernetes.io/docs, kubernetes.io/blog, and the other sites listed in the handbook (check the current list; Helm and Gateway API docs have been added for the new curriculum)</td>
+</tr>
+<tr>
+<td>Retake</td>
+<td>One free retake is included</td>
+</tr>
+<tr>
+<td>Simulator</td>
+<td>Two <strong>killer.sh</strong> sessions come with your registration (36 hours each). The simulator is harder than the real exam</td>
+</tr>
+</tbody>
+</table>
+<h3 id="curriculum-weights-where-the-points-are">Curriculum weights (where the points are)<a class="headerlink" href="#curriculum-weights-where-the-points-are" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Weight</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Troubleshooting</strong></td>
+<td><strong>30%</strong></td>
+<td>Nodes, control plane components, apps, services, logs, resource usage</td>
+</tr>
+<tr>
+<td><strong>Cluster Architecture, Installation &amp; Configuration</strong></td>
+<td><strong>25%</strong></td>
+<td>RBAC, kubeadm, upgrades, HA, Helm, Kustomize, CRDs/operators, CNI/CSI/CRI</td>
+</tr>
+<tr>
+<td><strong>Services &amp; Networking</strong></td>
+<td><strong>20%</strong></td>
+<td>Pod connectivity, NetworkPolicy, Service types, Gateway API, Ingress, CoreDNS</td>
+</tr>
+<tr>
+<td><strong>Workloads &amp; Scheduling</strong></td>
+<td><strong>15%</strong></td>
+<td>Deployments, rollouts, ConfigMaps/Secrets, autoscaling, self-healing, scheduling</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td><strong>10%</strong></td>
+<td>StorageClasses, dynamic provisioning, volume types, access modes, PV/PVC</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Takeaway:</strong> Troubleshooting plus cluster administration make up <strong>55%</strong>. If you only have one day, those two get most of your time.</p>
+<hr />
+<h2 id="your-24-hour-plan-exam-tomorrow">Your 24-hour plan (exam tomorrow)<a class="headerlink" href="#your-24-hour-plan-exam-tomorrow" title="Permanent link">&para;</a></h2>
+<p>You can't learn Kubernetes in a day. You <em>can</em> get faster, fill gaps in high-weight topics, and avoid silly point losses.</p>
+<h3 id="today">Today<a class="headerlink" href="#today" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Time</th>
+<th>Do this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>30 min</td>
+<td>Read the <a href="08-cheat-sheet/">Cheat Sheet</a> and set up your aliases on a practice cluster until they're muscle memory</td>
+</tr>
+<tr>
+<td>2</td>
+<td>90 min</td>
+<td><strong>Cluster admin drills:</strong> etcd backup and restore, kubeadm upgrade (control plane, then worker), join a node, RBAC with a ServiceAccount, CSR for a user. See <a href="05-cluster-architecture/">Page 5</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>90 min</td>
+<td><strong>Troubleshooting drills:</strong> break and fix kubelet, kube-apiserver manifest, scheduler, a Service with no endpoints, DNS. See <a href="06-troubleshooting/">Page 6</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>60 min</td>
+<td><strong>New-curriculum topics:</strong> Gateway API HTTPRoute, Helm install with values, Kustomize overlay, CRD/operator, HPA, native sidecar, PriorityClass</td>
+</tr>
+<tr>
+<td>5</td>
+<td>60 min</td>
+<td>NetworkPolicy (AND vs OR selectors), Ingress, StorageClass + PVC + pod</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2 h</td>
+<td><strong>Timed mock:</strong> <a href="07-practice-tasks/">Practice Tasks</a> under a 2-hour timer, or a killer.sh session. Review every miss</td>
+</tr>
+<tr>
+<td>7</td>
+<td>—</td>
+<td>Stop early and <strong>sleep</strong>. A rested brain beats one more hour of practice</td>
+</tr>
+</tbody>
+</table>
+<p>Free hands-on practice environments: <strong>killer.sh</strong> (included with registration) and <strong>Killercoda</strong> CKA scenarios (free, in the browser).</p>
+<h3 id="exam-morning">Exam morning<a class="headerlink" href="#exam-morning" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run the PSI system check on the <strong>same computer and network</strong> you'll use</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Clean desk, clear room, only one monitor, government ID ready</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Close all other apps (VPNs, chat, screen recorders)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Log in <strong>30 minutes early</strong>. Check-in takes time</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Re-read the <a href="08-cheat-sheet/">Cheat Sheet</a> once</li>
 </ul>
-<h2 id="184-backup-and-gitops">18.4 Backup and GitOps<a class="headerlink" href="#184-backup-and-gitops" title="Permanent link">&para;</a></h2>
-<p>Keep the Helm values, the <code>ClusterPolicy</code>, sharing ConfigMaps, MIG configs, Kueue objects, and scheduler configs in Git. Manage them with Argo CD or Flux. Because GPU nodes are stateless with the operator, you can always rebuild them from Git.</p>
+<hr />
+<h2 id="exam-day-strategy">Exam-day strategy<a class="headerlink" href="#exam-day-strategy" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Run the context command at the start of every task.</strong> Each task shows a command like <code>kubectl config use-context &lt;cluster&gt;</code>. Copy it, run it, and only then work. Doing a correct task on the wrong cluster scores <strong>zero</strong>.</li>
+<li><strong>Note the host.</strong> Some tasks say "ssh to node X". Do it, use <code>sudo -i</code> if you need root, and <strong><code>exit</code> back</strong> to the base terminal afterwards.</li>
+<li><strong>Triage.</strong> Do quick, high-weight tasks first. If a task takes more than about 8 minutes, flag it and move on. About 6 minutes per task is the average budget.</li>
+<li><strong>Generate YAML, don't type it.</strong> Use <code>kubectl create ... --dry-run=client -o yaml &gt; file.yaml</code>, then edit. Copy examples from kubernetes.io for kinds without generators (PV, PVC, NetworkPolicy, HTTPRoute).</li>
+<li><strong>Verify every answer.</strong> <code>k get</code>, <code>k describe</code>, <code>k logs</code>, <code>k auth can-i</code>, curl from a test pod. Partial credit exists, so a verified half-solution beats an unverified full one.</li>
+<li><strong>Use the exact names, namespaces and paths given.</strong> Graders check <code>name</code>, <code>namespace</code>, <code>labels</code>, the file path and the output format literally.</li>
+<li><strong>Copy and paste:</strong> in the PSI terminal, use <strong>Ctrl+Shift+C / Ctrl+Shift+V</strong>. Copy names straight from the task text to avoid typos.</li>
+<li><strong>Don't fight the environment.</strong> If the browser docs are slow, use <code>kubectl explain &lt;kind&gt;.spec --recursive</code> in the terminal.</li>
+</ol>
+<hr />
+<h2 id="set-up-the-terminal-in-the-first-minute">Set up the terminal in the first minute<a class="headerlink" href="#set-up-the-terminal-in-the-first-minute" title="Permanent link">&para;</a></h2>
+<p><code>kubectl</code> and the <code>k</code> alias with completion are usually preconfigured. If not, or to add helpers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">k</span><span class="o">=</span>kubectl<span class="w">                                   </span><span class="c1"># usually already set</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="k">do</span><span class="o">=</span><span class="s2">"--dry-run=client -o yaml"</span><span class="w">              </span><span class="c1"># k create deploy x --image=nginx $do &gt; x.yaml</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">now</span><span class="o">=</span><span class="s2">"--force --grace-period=0"</span><span class="w">             </span><span class="c1"># k delete pod x $now</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>kubectl<span class="w"> </span>completion<span class="w"> </span>bash<span class="o">)</span><span class="p">;</span><span class="w"> </span><span class="nb">complete</span><span class="w"> </span>-o<span class="w"> </span>default<span class="w"> </span>-F<span class="w"> </span>__start_kubectl<span class="w"> </span>k
+</code></pre></div>
+<p>Vim, for YAML that doesn't break:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c">" ~/.vimrc</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">set</span> <span class="nb">expandtab</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">2</span> <span class="k">shiftwidth</span><span class="p">=</span><span class="m">2</span> <span class="nb">autoindent</span> <span class="nb">number</span>
+</code></pre></div>
+<p>Useful vim keys: <code>:set paste</code> before pasting, <code>V</code> + <code>&gt;</code> / <code>&lt;</code> to indent a block, <code>u</code> to undo, <code>:%s/old/new/g</code> to replace.</p>
+<hr />
+<p>Start with <strong><a href="01-kubectl-fundamentals/">1. Fundamentals &amp; kubectl Speed →</a></strong>, or jump to the <a href="07-practice-tasks/">Practice Tasks</a> if you're already confident.</p>
 
 
 
@@ -1668,7 +1771,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../17-using-gpus-efficiently/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 17. Using GPUs Efficiently: Utilization, Quotas, Autoscaling, Cost">
+          <a href="../gitops-argocd/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GitOps with Argo CD">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1678,20 +1781,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                17. Using GPUs Efficiently: Utilization, Quotas, Autoscaling, Cost
+                GitOps with Argo CD
               </div>
             </div>
           </a>
         
         
           
-          <a href="../19-security-considerations/" class="md-footer__link md-footer__link--next" aria-label="Next: 19. Security Considerations">
+          <a href="01-kubectl-fundamentals/" class="md-footer__link md-footer__link--next" aria-label="Next: 1. Fundamentals &amp;amp; kubectl Speed">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                19. Security Considerations
+                1. Fundamentals &amp; kubectl Speed
               </div>
             </div>
             <div class="md-footer__button md-icon">
