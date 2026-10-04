@@ -9,6 +9,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parent / "NVIDIA-GPU-Operator-Guide.md"
+PAGES = HERE / "pages"  # standalone pages, copied as-is and listed after the guide
 DOCS = HERE / "docs"
 
 SECTION_RE = re.compile(r"^## (\d+)\. (.+)$")
@@ -69,6 +70,13 @@ def main():
         shutil.rmtree(DOCS)
     DOCS.mkdir()
 
+    extra_pages = []  # (title, filename)
+    for p in sorted(PAGES.glob("*.md")) if PAGES.exists() else []:
+        text = p.read_text(encoding="utf-8")
+        title = next((l[2:].strip() for l in text.splitlines() if l.startswith("# ")), p.stem)
+        extra_pages.append((title, p.name))
+        shutil.copyfile(p, DOCS / p.name)
+
     # Home page: intro without the hand-written TOC (the site nav replaces it).
     home, skip = [], False
     for l in intro:
@@ -77,6 +85,10 @@ def main():
             home.append("## Contents\n")
             for n, t, f, _ in sections:
                 home.append(f"{n}. [{t}]({f})")
+            if extra_pages:
+                home.append("\n## More guides\n")
+                for title, f in extra_pages:
+                    home.append(f"- [{title}]({f})")
             continue
         if skip:
             if l.strip() == "---":
@@ -90,7 +102,7 @@ def main():
         page = [f"# {n}. {t}", ""] + demote(body)
         (DOCS / f).write_text(fix_links("\n".join(page)).rstrip() + "\n", encoding="utf-8")
 
-    print(f"Wrote index.md + {len(sections)} section pages to {DOCS}")
+    print(f"Wrote index.md + {len(sections)} section pages + {len(extra_pages)} extra pages to {DOCS}")
 
 
 if __name__ == "__main__":

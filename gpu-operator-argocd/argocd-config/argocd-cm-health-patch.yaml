@@ -1,0 +1,58 @@
+# Custom health checks so Argo CD reports the GPU stack's real state instead of
+# "Healthy" as soon as the manifests are applied. Merge into argocd-cm:
+#   kubectl -n argocd patch configmap argocd-cm --type merge \
+#     --patch-file gpu-operator-argocd/argocd-config/argocd-cm-health-patch.yaml
+data:
+  # ClusterPolicy.status.state is one of: ready | notReady | ignored
+  resource.customizations.health.nvidia.com_ClusterPolicy: |
+    hs = {}
+    if obj.status ~= nil and obj.status.state ~= nil then
+      if obj.status.state == "ready" then
+        hs.status = "Healthy"
+        hs.message = "All GPU Operator components are ready"
+        return hs
+      end
+      if obj.status.state == "ignored" then
+        hs.status = "Degraded"
+        hs.message = "ClusterPolicy ignored: only one ClusterPolicy is allowed per cluster"
+        return hs
+      end
+    end
+    hs.status = "Progressing"
+    hs.message = "Waiting for GPU Operator components (driver, toolkit, device plugin) to become ready"
+    return hs
+
+  # NVIDIADriver.status.state is one of: ready | notReady | ignored | disabled
+  resource.customizations.health.nvidia.com_NVIDIADriver: |
+    hs = {}
+    if obj.status ~= nil and obj.status.state ~= nil then
+      if obj.status.state == "ready" or obj.status.state == "disabled" then
+        hs.status = "Healthy"
+        hs.message = "NVIDIADriver " .. obj.status.state
+        return hs
+      end
+      if obj.status.state == "ignored" then
+        hs.status = "Degraded"
+        hs.message = "NVIDIADriver ignored (check for overlapping nodeSelectors)"
+        return hs
+      end
+    end
+    hs.status = "Progressing"
+    hs.message = "Waiting for driver pods to become ready"
+    return hs
+
+  # Lets sync waves in the app-of-apps wait for each child Application to become
+  # healthy (Argo CD stopped assessing Application health by default in v1.8).
+  resource.customizations.health.argoproj.io_Application: |
+    hs = {}
+    hs.status = "Progressing"
+    hs.message = ""
+    if obj.status ~= nil then
+      if obj.status.health ~= nil then
+        hs.status = obj.status.health.status
+        if obj.status.health.message ~= nil then
+          hs.message = obj.status.health.message
+        end
+      end
+    end
+    return hs

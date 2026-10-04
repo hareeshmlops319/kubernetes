@@ -26,7 +26,7 @@ driver:
       force: false
       deleteEmptyDir: true
       timeoutSeconds: 300
-    podDeletion:
+    gpuPodDeletion:
       force: false
       deleteEmptyDir: true
       timeoutSeconds: 300

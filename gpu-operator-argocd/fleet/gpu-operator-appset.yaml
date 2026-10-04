@@ -1,0 +1,67 @@
+# Multi-cluster alternative to apps/gpu-operator.yaml: one GPU Operator Application per
+# GPU cluster registered in Argo CD. Opt a cluster in by labeling its Argo CD cluster secret:
+#   gpu-operator-channel=canary   -> gets the newest chart version first
+#   gpu-operator-channel=stable   -> gets the version promoted after canary is healthy
+# Promotion = a pull request that bumps the stable chartVersion below.
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: gpu-operator-fleet
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            gpu-operator-channel: canary
+        values:
+          chartVersion: v26.7.1
+    - clusters:
+        selector:
+          matchLabels:
+            gpu-operator-channel: stable
+        values:
+          chartVersion: v26.7.0
+  template:
+    metadata:
+      name: "gpu-operator-{{ .name }}"
+      labels:
+        gpu-operator-channel: '{{ index .metadata.labels "gpu-operator-channel" }}'
+    spec:
+      project: gpu-platform
+      sources:
+        - repoURL: https://helm.ngc.nvidia.com/nvidia
+          chart: gpu-operator
+          targetRevision: "{{ .values.chartVersion }}"
+          helm:
+            releaseName: gpu-operator
+            valueFiles:
+              - $values/gpu-operator-argocd/values/common.yaml
+              - "$values/gpu-operator-argocd/values/clusters/{{ .name }}.yaml"
+            ignoreMissingValueFiles: true
+        - repoURL: https://github.com/hareeshmlops319/kubernetes.git
+          targetRevision: main
+          ref: values
+      destination:
+        server: "{{ .server }}"
+        namespace: gpu-operator
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        managedNamespaceMetadata:
+          labels:
+            pod-security.kubernetes.io/enforce: privileged
+            pod-security.kubernetes.io/audit: privileged
+            pod-security.kubernetes.io/warn: privileged
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 30s
+            factor: 2
+            maxDuration: 5m

@@ -1,0 +1,7 @@
+# Overrides for the cluster Argo CD runs in (Argo CD's default cluster name: in-cluster).
+# Anything here is merged on top of values/common.yaml.
+
+# Example: share GPUs 4 ways by default on a dev cluster.
+# devicePlugin:
+#   config:
+#     default: time-sliced-4

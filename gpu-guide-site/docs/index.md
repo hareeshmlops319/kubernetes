@@ -31,3 +31,7 @@
 21. [Reference Architectures](21-reference-architectures.md)
 22. [Cheat Sheet and Checklists](22-cheat-sheet-and-checklists.md)
 23. [Further Reading](23-further-reading.md)
+
+## More guides
+
+- [GitOps Deployment with Argo CD](gitops-argocd.md)

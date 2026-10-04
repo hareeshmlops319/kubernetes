@@ -1,0 +1,47 @@
+# NVIDIA GPU Operator for the cluster Argo CD runs in.
+# Chart from NVIDIA's Helm repo, values from this Git repo (multi-source Application).
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gpu-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  # No resources-finalizer on purpose: deleting this Application leaves the GPU stack
+  # running instead of tearing drivers out from under GPU workloads.
+spec:
+  project: gpu-platform
+  sources:
+    - repoURL: https://helm.ngc.nvidia.com/nvidia
+      chart: gpu-operator
+      targetRevision: v26.7.1
+      helm:
+        releaseName: gpu-operator
+        valueFiles:
+          - $values/gpu-operator-argocd/values/common.yaml
+          - $values/gpu-operator-argocd/values/clusters/in-cluster.yaml
+        ignoreMissingValueFiles: true
+    - repoURL: https://github.com/hareeshmlops319/kubernetes.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gpu-operator
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    managedNamespaceMetadata:
+      labels:
+        pod-security.kubernetes.io/enforce: privileged
+        pod-security.kubernetes.io/audit: privileged
+        pod-security.kubernetes.io/warn: privileged
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true      # ClusterPolicy CRD is ~150 KB; avoids annotation size limits
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 5m

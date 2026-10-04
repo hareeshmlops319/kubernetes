@@ -1,0 +1,20 @@
+# App-of-apps root. Apply once by hand; Argo CD manages everything under apps/ from then on:
+#   kubectl apply -n argocd -f gpu-operator-argocd/bootstrap/root-app.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gpu-platform-root
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hareeshmlops319/kubernetes.git
+    targetRevision: main
+    path: gpu-operator-argocd/apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

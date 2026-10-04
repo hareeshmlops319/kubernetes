@@ -1,0 +1,73 @@
+name: Validate GPU Operator Argo CD config
+
+on:
+  pull_request:
+    paths:
+      - "gpu-operator-argocd/**"
+      - ".github/workflows/gpu-operator-argocd-validate.yaml"
+  push:
+    branches: [main]
+    paths:
+      - "gpu-operator-argocd/**"
+      - ".github/workflows/gpu-operator-argocd-validate.yaml"
+
+permissions:
+  contents: read
+
+env:
+  KUBECONFORM_VERSION: v0.7.0
+  CRD_SCHEMAS: https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: azure/setup-helm@v4
+
+      - name: Install kubeconform
+        run: |
+          curl -sL "https://github.com/yannh/kubeconform/releases/download/${KUBECONFORM_VERSION}/kubeconform-linux-amd64.tar.gz" \
+            | tar xz -C /usr/local/bin kubeconform
+
+      - name: Read pinned chart version
+        run: |
+          CHART_VERSION=$(yq '.spec.sources[0].targetRevision' gpu-operator-argocd/apps/gpu-operator.yaml)
+          echo "CHART_VERSION=$CHART_VERSION" >> "$GITHUB_ENV"
+          echo "Chart version: $CHART_VERSION"
+
+      - name: Render chart for every cluster values file
+        run: |
+          helm repo add nvidia https://helm.ngc.nvidia.com/nvidia
+          helm repo update
+          mkdir -p rendered
+          for f in gpu-operator-argocd/values/clusters/*.yaml; do
+            echo "::group::$(basename "$f")"
+            helm template gpu-operator nvidia/gpu-operator --version "$CHART_VERSION" \
+              -n gpu-operator --include-crds \
+              -f gpu-operator-argocd/values/common.yaml -f "$f" > "rendered/$(basename "$f")"
+            grep -c '^kind:' "rendered/$(basename "$f")"
+            echo "::endgroup::"
+          done
+
+      # Validate ClusterPolicy & co. against the CRDs shipped in this exact chart version
+      # (community catalogs lag behind new chart releases).
+      - name: Generate strict schemas from the chart's CRDs
+        run: |
+          pip install --quiet pyyaml
+          helm pull nvidia/gpu-operator --version "$CHART_VERSION" --untar --untardir chart
+          python gpu-operator-argocd/hack/crd2schema.py chart/gpu-operator/crds schemas
+
+      - name: Validate rendered manifests
+        run: |
+          kubeconform -strict -summary -ignore-missing-schemas \
+            -schema-location default \
+            -schema-location 'schemas/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+            -schema-location "$CRD_SCHEMAS" rendered/
+
+      - name: Validate Argo CD manifests
+        run: |
+          kubeconform -strict -summary \
+            -schema-location default -schema-location "$CRD_SCHEMAS" \
+            gpu-operator-argocd/bootstrap gpu-operator-argocd/apps gpu-operator-argocd/fleet

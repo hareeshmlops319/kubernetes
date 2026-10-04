@@ -1,0 +1,36 @@
+# Restricts what the GPU platform apps may deploy, and from where.
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: gpu-platform
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"   # project must exist before its Applications
+spec:
+  description: NVIDIA GPU Operator and related GPU platform components
+  sourceRepos:
+    - https://helm.ngc.nvidia.com/nvidia
+    - https://github.com/hareeshmlops319/kubernetes.git
+  destinations:
+    - server: "*"
+      namespace: gpu-operator
+  # Cluster-scoped kinds the gpu-operator chart can render. With the default values it
+  # renders CRDs, ClusterRoles/Bindings and ClusterPolicy; NVIDIADriver, GPUCluster and
+  # NodeFeatureRule appear only when those optional features are enabled.
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: nvidia.com
+      kind: ClusterPolicy
+    - group: nvidia.com
+      kind: NVIDIADriver
+    - group: nvidia.com
+      kind: GPUCluster
+    - group: nfd.k8s-sigs.io
+      kind: NodeFeatureRule

@@ -1,0 +1,16 @@
+# Overrides for a production GPU cluster registered in Argo CD as "gpu-prod".
+# Merged on top of values/common.yaml by the ApplicationSet in fleet/.
+
+driver:
+  kernelModuleType: open
+  upgradePolicy:
+    maxParallelUpgrades: 1
+    maxUnavailable: 10%
+    waitForCompletion:
+      timeoutSeconds: 3600           # give running training jobs up to 1h to finish
+      podSelector: "workload-type=training"
+
+dcgmExporter:
+  serviceMonitor:
+    additionalLabels:
+      release: kube-prometheus-stack # match your Prometheus serviceMonitorSelector
