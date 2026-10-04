@@ -9,6 +9,7 @@ theme:
     - navigation.tracking
     - navigation.top
     - navigation.footer
+    - navigation.indexes
     - toc.follow
     - search.suggest
     - search.highlight
@@ -32,11 +33,53 @@ theme:
 plugins:
   - search
 
+validation:
+  anchors: warn          # with --strict, broken #section links fail the build
+
+nav:
+  - Home: index.md
+  - NVIDIA GPU Operator Guide:
+      - 01-fundamentals.md
+      - 02-what-the-gpu-operator-is-and-why-you-need-it.md
+      - 03-architecture-and-components.md
+      - 04-prerequisites-and-planning.md
+      - 05-installation-basic.md
+      - 06-installation-scenarios-intermediate.md
+      - 07-verifying-the-installation.md
+      - 08-scheduling-gpu-workloads.md
+      - 09-gpu-sharing.md
+      - 10-dynamic-resource-allocation-dra-for-gpus.md
+      - 11-monitoring-and-observability-dcgm.md
+      - 12-performance-optimization.md
+      - 13-performance-optimization.md
+      - 14-performance-optimization.md
+      - 15-performance-optimization.md
+      - 16-performance-optimization.md
+      - 17-using-gpus-efficiently.md
+      - 18-day-2-operations.md
+      - 19-security-considerations.md
+      - 20-troubleshooting-playbook.md
+      - 21-reference-architectures.md
+      - 22-cheat-sheet-and-checklists.md
+      - 23-further-reading.md
+  - GitOps with Argo CD: gitops-argocd.md
+  - CKA Exam Prep:
+      - cka/index.md
+      - cka/01-kubectl-fundamentals.md
+      - cka/02-workloads-scheduling.md
+      - cka/03-services-networking.md
+      - cka/04-storage.md
+      - cka/05-cluster-architecture.md
+      - cka/06-troubleshooting.md
+      - cka/07-practice-tasks.md
+      - cka/08-cheat-sheet.md
+
 markdown_extensions:
   - tables
   - toc:
       permalink: true
   - admonition
+  - pymdownx.details
   - attr_list
   - md_in_html
   - pymdownx.highlight:

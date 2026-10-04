@@ -70,12 +70,20 @@ def main():
         shutil.rmtree(DOCS)
     DOCS.mkdir()
 
-    extra_pages = []  # (title, filename)
-    for p in sorted(PAGES.glob("*.md")) if PAGES.exists() else []:
-        text = p.read_text(encoding="utf-8")
+    # Standalone pages: a .md file, or a folder whose index.md is its landing page.
+    extra_pages = []  # (title, link)
+    for p in sorted(PAGES.iterdir()) if PAGES.exists() else []:
+        if p.is_dir():
+            shutil.copytree(p, DOCS / p.name)
+            landing, link = p / "index.md", f"{p.name}/index.md"
+        elif p.suffix == ".md":
+            shutil.copyfile(p, DOCS / p.name)
+            landing, link = p, p.name
+        else:
+            continue
+        text = landing.read_text(encoding="utf-8")
         title = next((l[2:].strip() for l in text.splitlines() if l.startswith("# ")), p.stem)
-        extra_pages.append((title, p.name))
-        shutil.copyfile(p, DOCS / p.name)
+        extra_pages.append((title, link))
 
     # Home page: intro without the hand-written TOC (the site nav replaces it).
     home, skip = [], False

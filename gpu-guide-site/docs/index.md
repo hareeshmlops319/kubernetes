@@ -34,4 +34,5 @@
 
 ## More guides
 
+- [CKA Exam Prep](cka/index.md)
 - [GitOps Deployment with Argo CD](gitops-argocd.md)
